@@ -14,7 +14,7 @@ const arr = [];
 let listItem = document.createElement("li");
 /*creo mi primera funcion llamada a travez del evento "click"
 La tarea de esta funcion es verificar si hay texto agregado en el input y si el elemento a agregar ya existe, 
-en caso que el elemento a agregar ya exista retornara una funcion distinta a que si el elemento no existiriera*/
+en caso que el elemento a agregar ya exista retornara una funcion distinta a que si el elemento no existiera*/
 btn.addEventListener("click" , () => {
     /*llamo a un funcion cuyo objetivo es verificar si el elemento a agregar ya existe en el array*/
     let find = findElement(addList.value);
@@ -123,7 +123,7 @@ function suppress(textElement)
 function findElement(textElement)
 {
     /* mediante el meotod findIndex busco algun valor que coincida con el parametro de mi funcion, este metodo me devuelve el indice del objeto que coincida y
-    en caso qie no coincida devuelve -1*/
+    en caso que no coincida devuelve -1*/
     return arr.findIndex((item) => item.value == textElement);
 }
 /* Funcion destinada a enviar un mensaje al usuario notificando que la tarea que quiere agregar ya existe */
