@@ -19,11 +19,9 @@ btn.addEventListener("click" , () => {
     /*llamo a un funcion cuyo objetivo es verificar si el elemento a agregar ya existe en el array*/
     let find = findElement(addList.value);
     /*condicion para evitar que cadenas de texto vacias sean agregadas al array*/
-    if(addList.value.length > 0)
-    {
+    if(addList.value.length > 0){
         /*Si el elemento no existe llamo a la funcion createList()*/
-        if(find == -1)
-        {
+        if(find == -1){
            return createList()
         }else {
             /*Si el elemento no existe llamo a la funcion existingElement()*/
@@ -35,15 +33,13 @@ btn.addEventListener("click" , () => {
 function createList(filter) {
     let map;
     /*Verifico nuevamente si la cadena de texto ingresada tiene contenido (este paso lo hice para corregir un error que tenia)*/
-    if(addList.value.length > 0)
-    {
+    if(addList.value.length > 0){
         /* agrego un objeto a mi array, el elemento tiene dos "keys" uno es el valor del input y otro es la clase que ire agregando en otra funcion */
         arr.push({value : addList.value, class : ""})
     }
     /*Solo le paso paremetro a esta funcion desde la funcion que ejecuta mi buscador, por lo tanto si no utilizo el buscador y llamo a esta funcion desde otro lado 
     el paremetro queda como "undefined" asi que para evitar errores cree esta condicion*/
-    if(filter != undefined)
-    {
+    if(filter != undefined){
         /*Este parametro que llame "filter" proviene del resultado de mi campo de busqueda, lo que hago aqui es
         recorrer solo el array de objetos que arrojo mi busqueda*/
         map = filter.map((x) => {
@@ -74,8 +70,7 @@ coma " , " entre cada objeto, asi que la elimino con este metodo*/
     return modifierList()
 }
 /* Funcion creada con el unico proposito de agregarle funciones a los botones creados dentro de la variable "map"*/
-function modifierList()
-{
+function modifierList(){
     /*Tomo de referencia en nombre de la clase de mis botones creados en la variable "map" */
     let checkItem = document.getElementsByClassName("check");
     let deleteItem = document.getElementsByClassName("delete");
@@ -95,8 +90,7 @@ function modifierList()
 }
 /* Funcion destinada a agregar una clase que contiene una propiedad que tacha al texto de la lista para que el usuario pueda marcar
 las tareas que ya realizo */
-function complete(element)
-{
+function complete(element){
     /*Agrego la clase "lineCheck a la etiqueta <li>*/
     element.classList.add("lineCheck")
     /*En el texto de mi etiqueta <li> entra tambien los simbolo "✔""❌" que use para los botones, esto no lo necesito asi que con el metodo slice()
@@ -110,8 +104,7 @@ function complete(element)
     arr[find].class = element.classList[0];
 }
 /*Funcion destinada a eleminar un elemento en especifico de la lista*/
-function suppress(textElement)
-{
+function suppress(textElement){
     /*Llamo a mi funcion destinada a verificar si el elemnto existe en mi array*/
     let find = findElement(textElement);
     /*mediante el metodo splice() elimino de mi array el objeto especifico*/
@@ -120,8 +113,7 @@ function suppress(textElement)
     return createList();
 }
 /* Mi funcion favorita de todo el script */
-function findElement(textElement)
-{
+function findElement(textElement){
     /* mediante el meotod findIndex busco algun valor que coincida con el parametro de mi funcion, este metodo me devuelve el indice del objeto que coincida y
     en caso que no coincida devuelve -1*/
     return arr.findIndex((item) => item.value == textElement);
@@ -142,8 +134,7 @@ search.addEventListener("input", () => {
     (este metodo me devuelve un array de objetos si consigue coincidencia alguna) */
     let filter = arr.filter((item)  => item.value == search.value);
     /* si fillter.length no tiene longitud, basicamente si la longitud es igual a cero es por que no encontro coincidencia*/
-    if(filter.length <= 0)
-    {
+    if(filter.length <= 0){
         /*Si la longitud del valor de mi input en mayor a cero quiere decir que el usuario esta ejecutando una busqueda*/
         if(search.value.length > 0)
         {
